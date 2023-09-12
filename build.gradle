@@ -1,0 +1,35 @@
+plugins {
+	id 'idea'
+	id 'io.spring.dependency-management' version "$dependencyManagerVersion"
+}
+
+idea {
+	project {
+		languageLevel = 17
+	}
+	module {
+		downloadJavadoc = true
+		downloadSources = true
+	}
+}
+
+allprojects {
+	group "com.nikik0"
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+	apply plugin: "io.spring.dependency-management"
+	dependencyManagement {
+		dependencies {
+			imports {
+				mavenBom("org.springframework.boot:spring-boot-dependencies:$springbootVersion")
+			}
+
+			dependency("org.springframework.shell:spring-shell-starter:$springBootShell")
+			dependency("org.projectlombok:lombok:$lombok")
+		}
+	}
+}

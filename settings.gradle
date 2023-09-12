@@ -1,0 +1,4 @@
+rootProject.name = 'cryptoservice'
+
+include "services:apiRequester"
+include "services:notification"
